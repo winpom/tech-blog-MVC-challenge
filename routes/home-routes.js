@@ -1,20 +1,20 @@
 const router = require('express').Router();
-const { Gallery, Painting } = require('../models');
+const { Post, User } = require('../models');
 
-// ? GET all galleries for homepage
+// ? GET all posts for homepage
 router.get('/', async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findAll({
+    const dbPostData = await Post.findAll({
       include: [
         {
-          model: Painting,
-          attributes: ['filename', 'description'],
+          model: User,
+          attributes: ['username', 'email'],
         },
       ],
     });
 
-    const galleries = dbGalleryData.map((gallery) =>
-      gallery.get({ plain: true })
+    const posts = dbPostData.map((post) =>
+      post.get({ plain: true })
     );
 
     res.render('homepage', {
@@ -26,27 +26,24 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ? GET one gallery
-router.get('/gallery/:id', async (req, res) => {
+// ? GET one post
+router.get('/post/:id', async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findByPk(req.params.id, {
+    const dbPostData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: Painting,
+          model: User,
           attributes: [
             'id',
-            'title',
-            'artist',
-            'exhibition_date',
-            'filename',
-            'description',
+            'username',
+            'email',
           ],
         },
       ],
     });
 
-    const gallery = dbGalleryData.get({ plain: true });
-    res.render('gallery', { gallery });
+    const post = dbPostData.get({ plain: true });
+    res.render('post', { post });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -54,17 +51,17 @@ router.get('/gallery/:id', async (req, res) => {
 });
 
 // ? GET one painting
-router.get('/painting/:id', async (req, res) => {
-  try {
-    const dbPaintingData = await Painting.findByPk(req.params.id);
+// router.get('/painting/:id', async (req, res) => {
+//   try {
+//     const dbPaintingData = await Painting.findByPk(req.params.id);
 
-    const painting = dbPaintingData.get({ plain: true });
+//     const painting = dbPaintingData.get({ plain: true });
 
-    res.render('painting', { painting });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//     res.render('painting', { painting });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
