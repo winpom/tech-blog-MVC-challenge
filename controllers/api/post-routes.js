@@ -2,6 +2,20 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/post/:id', async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const postData = await Post.findByPk(postId, {
+      include: [{ model: User, attributes: ['username'] }],
+    });
+
+    res.render('post', { post: postData });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Failed to retrieve post data' });
+  }
+});
+
 // Create a new post
 router.post('/new', withAuth, async (req, res) => {
   try {

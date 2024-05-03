@@ -5,10 +5,9 @@ const withAuth = require('../utils/auth');
 // Dashboard route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    // Fetch all posts associated with the logged-in user
     const postData = await Post.findAll({
       where: {
-        user_id: req.session.user_id, // Assuming you store user_id in the session
+        user_id: req.session.user_id, 
       },
       include: [
         {

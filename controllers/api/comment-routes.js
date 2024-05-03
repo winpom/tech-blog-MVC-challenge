@@ -18,6 +18,23 @@ router.post('/new', withAuth, async (req, res) => {
   }
 });
 
+// Get a specific comment by ID
+router.get('/:comment_id', async (req, res) => {
+  try {
+    const comment = await Comment.findByPk(req.params.comment_id);
+
+    if (!comment) {
+      res.status(404).json({ message: 'Comment not found' });
+      return;
+    }
+
+    res.status(200).json(comment);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // Delete a comment
 router.delete('/:comment_id', withAuth, async (req, res) => {
   try {
