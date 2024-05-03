@@ -1,12 +1,12 @@
 <section class="card">
   <a href="/post/{{id}}">
     <header>{{title}}</header>
-    <h3>{{format_date post_date}}</h3>
-    <h5>{{user_id}}</h5>
-    <p>{{content}}</p>
-    <h6>Comments:</h6>
-    {{#each comments as |comment|}}
-    <p>{{> comment-details}}</p>
-    {{/each}}
   </a>
+  <h5>{{format_date post_date}}</h5>
+  <h5>{{username}}</h5>
+  <p>{{content}}</p>
+  <h6>Comments:</h6>
+  {{#each comments as |comment|}}
+  <p>{{> comment-details}}</p>
+  {{/each}}
 </section>
