@@ -1,16 +1,14 @@
-// routes/comment-routes.js
-
 const router = require('express').Router();
-const { Comment } = require('../models');
-const withAuth = require('../utils/auth');
+const { Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // Create a new comment
-router.post('/post/:postId/comment/new', withAuth, async (req, res) => {
+router.post('/new', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
       content: req.body.content,
       user_id: req.session.user_id,
-      post_id: req.params.postId,
+      post_id: req.params.post_id,
     });
 
     res.status(200).json(newComment);
@@ -21,9 +19,9 @@ router.post('/post/:postId/comment/new', withAuth, async (req, res) => {
 });
 
 // Delete a comment
-router.delete('/comment/:commentId', withAuth, async (req, res) => {
+router.delete('/:comment_id', withAuth, async (req, res) => {
   try {
-    const comment = await Comment.findByPk(req.params.commentId);
+    const comment = await Comment.findByPk(req.params.comment_id);
 
     if (!comment) {
       res.status(404).json({ message: 'Comment not found' });
@@ -39,9 +37,9 @@ router.delete('/comment/:commentId', withAuth, async (req, res) => {
 });
 
 // Update a comment
-router.put('/comment/:commentId', withAuth, async (req, res) => {
+router.put('/:comment_id', withAuth, async (req, res) => {
   try {
-    const comment = await Comment.findByPk(req.params.commentId);
+    const comment = await Comment.findByPk(req.params.comment_id);
 
     if (!comment) {
       res.status(404).json({ message: 'Comment not found' });
