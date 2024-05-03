@@ -14,6 +14,7 @@ Post.init(
     post_date: {
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW, 
     },
     title: {
       type: DataTypes.STRING,
@@ -39,6 +40,11 @@ Post.init(
     underscored: true,
     timestamps: true,
     modelName: 'post',
+    hooks: {
+      beforeCreate: async (post) => {
+        post.post_date = new Date();
+      },
+    },
   }
 );
 

@@ -7,7 +7,6 @@ const postData = [
     title: 'My first tech post',
     content: 'Through both trials and tribulations, I have posted my first blog post',
     user_id: 1,
-    // comments: [ 1, 2 ]
   },
 ];
 const seedPosts = () => Post.bulkCreate(postData);

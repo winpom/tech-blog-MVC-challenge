@@ -15,11 +15,6 @@ const seedAll = async () => {
 
   await seedComments();
 
-  // await User.bulkCreate(userData, {
-  //   individualHooks: true,
-  //   returning: true,
-  // });
-
   process.exit(0);
 };
 

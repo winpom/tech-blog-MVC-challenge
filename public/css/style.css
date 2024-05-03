@@ -20,7 +20,7 @@ body {
 }
 
 a {
-  color: var(--dark);
+  color: var(--quatrinary);
   text-decoration: none;
 }
 
@@ -33,6 +33,7 @@ header {
   text-align: center;
   background: var(--primary);
   color: var(--light);
+  filter: drop-shadow(0px 5px 5px var(--dark))
 }
 
 main {
@@ -52,13 +53,17 @@ aside {
 nav {
   display: flex;
   background-color: var(--secondary);
+  padding: 14px 20px;
 }
 
 nav a {
   color: var(--light);
+  background-color: var(--primary);
   padding: 14px 20px;
   text-decoration: none;
   text-align: center;
+  border: solid var(--dark);
+  filter: drop-shadow(5px 5px 5px var(--dark))
 }
 
 nav a:hover {
@@ -66,7 +71,7 @@ nav a:hover {
   background-color: var(--dark);
 }
 
-.gallery {
+.user {
   flex: 4;
   background-color: #fff;
   padding: 50px;
@@ -92,14 +97,14 @@ img {
   height: auto;
 }
 
-.painting {
+.post {
   width: 50%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 25px;
 }
 
-.painting-details {
+.post-details {
   text-align: center;
   padding: 10px 20px;
   font-weight: bold;
@@ -144,7 +149,7 @@ img {
   font-weight: bold;
 }
 
-.gallery-name {
+.comment {
   text-transform: uppercase;
   letter-spacing: 3px;
   text-shadow: 2px 2px 5px var(--secondary);
