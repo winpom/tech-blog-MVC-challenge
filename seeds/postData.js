@@ -10,7 +10,6 @@ const postData = [
     comments: [ 1, 2 ]
   },
 ];
-'This blog is terrible', "I've seen better in my kindergartener's coding class"
 const seedPosts = () => Post.bulkCreate(postData);
 
 module.exports = seedPosts;
