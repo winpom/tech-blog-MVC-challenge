@@ -5,21 +5,21 @@ const withAuth = require('../utils/auth');
 // ? GET all posts for homepage
 router.get('/', async (req, res) => {
   try {
-    const dbPostData = await Post.findAll({
+    const postData = await Post.findAll({
       include: [
         {
           model: User,
-          attributes: ['username', 'email'],
+          attributes: ['title', 'content'],
         },
       ],
     });
 
-    const posts = dbPostData.map((post) =>
+    const posts = postData.map((post) =>
       post.get({ plain: true })
     );
 
     res.render('homepage', {
-      galleries,
+      posts,
     });
   } catch (err) {
     console.log(err);
@@ -30,39 +30,26 @@ router.get('/', async (req, res) => {
 // ? GET one post
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
-    const dbPostData = await Post.findByPk(req.params.id, {
+    const postData = await Post.findByPk(req.params.id, {
       include: [
         {
           model: User,
           attributes: [
             'id',
-            'username',
-            'email',
+            'title',
+            'content',
+            'comments',
           ],
         },
       ],
     });
 
-    const post = dbPostData.get({ plain: true });
+    const post = postData.get({ plain: true });
     res.render('post', { post });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
-// ? GET one painting
-// router.get('/painting/:id', async (req, res) => {
-//   try {
-//     const dbPaintingData = await Painting.findByPk(req.params.id);
-
-//     const painting = dbPaintingData.get({ plain: true });
-
-//     res.render('painting', { painting });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;
