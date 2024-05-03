@@ -1,0 +1,15 @@
+{{#if loggedIn}}
+<section class="post">
+  <div class="post-details">
+    <h3>{{post.title}}</h3>
+    <p>By: {{post.username}}</p>
+    <p>{{post.content}}</p>
+    <h6>Comments:</h6>
+    {{#each comments as |comment|}}
+    {{> comment-details}}
+    {{/each}}
+  </div>
+</section>
+{{else}}
+<a href="/login">You must login first to view this page</a>
+{{/if}}
