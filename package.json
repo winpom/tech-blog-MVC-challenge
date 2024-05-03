@@ -1,6 +1,6 @@
 {
-  "name": "museum-paintings",
-  "version": "1.0.0",
+  "name": "tech-blog-mvc-challenge",
+  "version": "0.1.0",
   "description": "",
   "main": "server.js",
   "scripts": {
