@@ -24,12 +24,8 @@ a {
   text-decoration: none;
 }
 
-a:visited {
-  color: inherit;
-}
-
 header {
-  padding: 40px;
+  padding: 20px 20px 10px 20px;
   text-align: center;
   background: var(--primary);
   color: var(--light);
@@ -52,6 +48,7 @@ aside {
 
 nav {
   display: flex;
+  justify-content: flex-end;
   background-color: var(--secondary);
   padding: 14px 20px;
 }
@@ -60,6 +57,7 @@ nav a {
   color: var(--light);
   background-color: var(--primary);
   padding: 14px 20px;
+  margin: 3px;
   text-decoration: none;
   text-align: center;
   border: solid var(--dark);
@@ -69,6 +67,78 @@ nav a {
 nav a:hover {
   color: var(--secondary);
   background-color: var(--dark);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    text-align: center;
+    /* padding-bottom: .5em; */
+}
+
+h1 {
+  font-size: 3em;
+  margin: 10px 0 32px 0;
+}
+
+h2 {
+    font-size: 1.75em;
+    padding-bottom: .75em;
+    border-bottom: .3em solid var(--text-color);
+}
+
+h3 {
+    font-size: 1.5em;
+    padding: 1em .25em .25em;
+}
+
+h4 {
+    font-size: 1.25em;
+    padding-bottom: .5em;
+}
+
+h5 {
+    font-size: 1em;
+    margin: 5px 0 5px 0;
+}
+
+h6 {
+    font-size: .75em;
+    margin: 10px auto;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.submit-btn {
+  text-align: center
+}
+
+.form-input {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  background-color: var(--light);
+  color: var(--dark);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--primary);
+  color: var(--light);
 }
 
 .user {
@@ -98,66 +168,68 @@ img {
 }
 
 .post {
-  width: 50%;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 25px;
-}
-
-.post-details {
-  text-align: center;
-  padding: 10px 20px;
-  font-weight: bold;
-}
-
-/* CARDS */
-.card {
+  color: var(--dark);
+  background-color: var(--light);
   margin: 20px;
-  flex: 0 1 300px;
+  padding: 10px;
+  flex: 0 1 40%;
   border: 7px double var(--dark);
   border-radius: 10px;
-  background-color: var(--light);
-  color: var(--dark);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.login-card {
-  margin: 0 0 20px 0;
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding: 5px;
-  border: 3px solid var(--dark);
-  border-radius: var(--border-radius);
-  border-style: double;
-  border-width: thick;
-  background-color: #577a7c;
-  color: var(--light);
-}
-
-.card header {
+.post header {
   color: var(--light);
   font-weight: bold;
   text-transform: uppercase;
   margin: 0 0 10px 0;
   background-color: var(--tertiary);
-  padding: 0.625rem;
+  padding: 15px;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 
-.card-body {
-  font-size: 1.4rem;
-  text-align: center;
-  font-weight: bold;
+.posts, 
+.login-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjusted justify-content property */
+  margin: auto;
+}
+
+/* CARDS */
+.login-card {
+  background-color: #577a7c;
+  color: var(--light);
+  margin: 20px;
+  padding: 10px;
+  border: 7px double var(--dark);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: var(--border-radius);
+  border-width: thick;
+  justify-content: space-between;
+}
+
+
+.contact {
+  background-color: #577a7c;
+  border: 7px double var(--dark);
+  color: var(--light);
+  padding: 5px;
+  display: grid;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .comment {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 2px 2px 5px var(--secondary);
-  border: 10px groove var(--light);
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding: 0 2px 2px 5px;
+  flex: 0 1 300px;
+  border: 1px dotted var(--dark);
+  border-radius: 10px;
+  background-color: var(--light);
+  color: var(--dark);
+  font-size: .8em;
+  line-height: .8;
 }
 
 /* LAYOUT */

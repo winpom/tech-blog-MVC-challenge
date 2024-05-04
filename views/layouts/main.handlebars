@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Regal Dog Tech Blog</title>
-  <link rel="stylesheet" type="text/css" href="/css/jass.css">
+  {{!-- <link rel="stylesheet" type="text/css" href="/css/jass.css"> --}}
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
@@ -16,7 +16,7 @@
   </header>
   <nav>
     <a href="/">Home</a>
-    <a href="/">Dashboard</a>
+    <a href="/dashboard">Dashboard</a>
     {{#if loggedIn}}
     <button id="logout" class="btn-no-style">Logout</button>
     {{else}}
@@ -25,7 +25,6 @@
   </nav>
   <main>
     <aside>
-      <h3>See what the techies are saying:</h3>
     </aside>
     <div class="posts">
       {{{body}}}
