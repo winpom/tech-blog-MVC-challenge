@@ -2,22 +2,25 @@ const express = require('express');
 const { Post, Comment } = require('../models');
 const router = express.Router();
 
-// router.get('/', (req, res) => {
-//   res.render('homepage');
-// });
-
 router.get('/', async (req, res) => {
   try {
+    // Check if the user is logged in
+    const loggedIn = req.session.loggedIn;
+
+    // Fetch posts data from the database
     const postData = await Post.findAll({
-      include: [{model: Comment}]
+      include: [{ model: Comment }]
     });
+
+    // Map the data to plain objects
     const mappedData = postData.map((post) =>
       post.get({
         plain: true
       })
-    )
-    console.log(mappedData);
-    res.render('homepage', { posts: mappedData });
+    );
+
+    // Render the homepage template, passing loggedIn and posts data
+    res.render('homepage', { loggedIn, posts: mappedData });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -25,15 +28,16 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
+  // If the user is already logged in, redirect to the homepage
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
 
+  // If not logged in, render the login page with loggedIn set to false
   res.render('login', {
-    logged_in: req.session.logged_in,
+    loggedIn: false
   });
-
 });
 
 module.exports = router;

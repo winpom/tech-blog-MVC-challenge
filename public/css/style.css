@@ -151,7 +151,7 @@ h6 {
   align-items: center;
 }
 
-.btn-no-style {
+/* .btn-no-style {
   background: none;
   border: none;
   padding: 0;
@@ -160,7 +160,7 @@ h6 {
   font-size: 100%;
   transition: color 0.1s;
   margin-left: 16px;
-}
+} */
 
 img {
   max-width: 100%;
@@ -207,18 +207,6 @@ img {
   border-radius: var(--border-radius);
   border-width: thick;
   justify-content: space-between;
-}
-
-
-.contact {
-  background-color: #577a7c;
-  border: 7px double var(--dark);
-  color: var(--light);
-  padding: 5px;
-  display: grid;
-  margin: 0 auto;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .comment {
