@@ -3,10 +3,9 @@ const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Create a new post
-router.post('/new', withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
-      post_date: new Date(), 
       title: req.body.title,
       content: req.body.content,
       user_id: req.session.user_id,

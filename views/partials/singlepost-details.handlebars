@@ -1,7 +1,7 @@
 <section class="single-post">
   <header>{{post.title}}</header>
   <h4>{{post.user.username}}</h4>
-  <h5>{{format_date post.post_date}}</h5>
+  <h5>{{format_date post.createdAt}}</h5>
   <p>{{post.content}}</p>
   <br>
   <h6>Comments:</h6>
@@ -12,6 +12,6 @@
   <form id="commentForm" style="display: none;">
     <label for="commentContent">Comment:</label><br>
     <textarea id="commentContent" placeholder="Write your comment here" required></textarea><br><br>
-    <button type="button" class="submit" id="submitComment">Submit Comment</button>
+    <button id="submitCommentBtn">Submit Comment</button>
   </form>
 </section>

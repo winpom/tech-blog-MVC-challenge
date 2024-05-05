@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // new post logic
+
+    // button to reveal post form
     const newPostButton = document.getElementById('newPostBtn');
     if (newPostButton) {
         newPostButton.addEventListener('click', (event) => {
@@ -8,58 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // new comment logic
-    const newCommentButton = document.getElementById('newCommentBtn');
-    if (newCommentButton) {
-        newCommentButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent the default behavior of the button
-            document.getElementById('commentForm').style.display = 'block'; // Show comment form
-        });
-    }
-
-    const submitCommentButton = document.getElementById('submitComment');
-    if (submitCommentButton) {
-        submitCommentButton.addEventListener('click', async (event) => {
-            event.preventDefault(); // Prevent the default behavior of the button
-            const content = document.getElementById('commentContent').value;
-            const postId = window.location.pathname.split('/').pop(); // Extract postId from URL
-
-            try {
-                const response = await fetch(`/api/comment/new`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        content,
-                        post_id: postId, // Include the post_id in the request body
-                        // user_id: YOUR_USER_ID_HERE, // Include the user_id in the request body
-                    }),
-                });
-
-                if (response.ok) {
-                    alert('Comment added successfully!');
-                    // Dynamically update the comment section here instead of reloading the page
-                    // window.location.reload(); 
-                } else {
-                    alert('Failed to add comment.');
-                }
-            } catch (error) {
-                console.error('Error adding comment:', error);
-                alert('An error occurred. Please try again.');
-            }
-        });
-    }
-
-    const submitPostButton = document.getElementById('submitPost');
+    //post form submission
+    const submitPostButton = document.getElementById('submitPostBtn'); 
     if (submitPostButton) {
         submitPostButton.addEventListener('click', async (event) => {
-            event.preventDefault(); // Prevent the default behavior of the button
+            event.preventDefault(); 
             const title = document.getElementById('postTitle').value;
             const content = document.getElementById('postContent').value;
 
             try {
-                const response = await fetch(`/api/post/new`, {
+                const response = await fetch(`/post`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -72,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     alert('Post added successfully!');
-                    // Dynamically update the post section here instead of reloading the page
                     // window.location.reload(); 
                 } else {
                     alert('Failed to add post.');
@@ -84,3 +43,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// new comment logic
+
+// button to reveal comment form
+const newCommentButton = document.getElementById('newCommentBtn');
+if (newCommentButton) {
+    newCommentButton.addEventListener('click', (event) => {
+        event.preventDefault(); 
+        document.getElementById('commentForm').style.display = 'block'; 
+    });
+}
+
+//comment form submission
+const submitCommentButton = document.getElementById('submitCommentBtn');
+if (submitCommentButton) {
+    submitCommentButton.addEventListener('click', async (event) => {
+        console.log('HELP ME')
+        event.preventDefault(); // Prevent the default behavior of the button
+        const content = document.getElementById('commentContent').value;
+
+        const postId = window.location.pathname.split('/').pop(); // Extract postId from URL
+        try {
+            const response = await fetch(`/api/comment/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    content,
+                    post_id: postId, 
+                }),
+            });
+
+            if (response.ok) {
+                alert('Comment added successfully!');
+                // window.location.reload(); 
+            } else {
+                alert('Failed to add comment.');
+            }
+        } catch (error) {
+            console.error('Error adding comment:', error);
+            alert('An error occurred. Please try again.');
+        }
+    });
+}
