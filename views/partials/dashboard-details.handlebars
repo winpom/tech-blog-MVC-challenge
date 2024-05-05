@@ -1,12 +1,18 @@
-{{#if loggedIn}}
 <section class="container">
   <h3 class="user-dashboard">{{user.username}}'s Posts</h3>
   <section class="flex-row justify-center">
     {{#each posts as |post|}}
-    {{> post-details}}
+      {{> post-details}}
     {{/each}}
   </section>
-  <button id="newPostButton">Create New Post</button>
+  <button id="newPostBtn">Create New Post</button>
+  <form id="postForm" style="display: none;">
+    <label for="postTitle">Title:</label><br>
+    <input type="text" id="postTitle" placeholder="Title your post" required><br><br>
+    <label for="postContent">Content:</label><br>
+    <textarea id="postContent" placeholder="Write your post here" required></textarea><br><br>
+    <button type="button" class="submit" id="submitPost">Submit Post</button>
+  </form>
 </section>
 {{else}}
 <section class="login-card">

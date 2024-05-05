@@ -1,7 +1,5 @@
-<section class="post">
-  <a href="/post/{{id}}">
-    <header>{{post.title}}</header>
-  </a>
+<section class="single-post">
+  <header>{{post.title}}</header>
   <h4>{{post.user.username}}</h4>
   <h5>{{format_date post.post_date}}</h5>
   <p>{{post.content}}</p>
@@ -10,4 +8,10 @@
   {{#each post.comments as |comment|}}
   <p>{{> comment-details}}</p>
   {{/each}}
+  <button id="newCommentBtn" style="display: block;">Add a Comment</button>
+  <form id="commentForm" style="display: none;">
+    <label for="commentContent">Comment:</label><br>
+    <textarea id="commentContent" placeholder="Write your comment here" required></textarea><br><br>
+    <button type="button" class="submit" id="submitComment">Submit Comment</button>
+  </form>
 </section>

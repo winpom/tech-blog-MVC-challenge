@@ -3,3 +3,22 @@
 {{else}}
 <a href="/login">You must login first to view this page</a>
 {{/if}}
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const newCommentButton = document.getElementById('newCommentBtn');
+        if (newCommentButton) {
+            newCommentButton.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent the default behavior of the button
+                const commentForm = document.getElementById('commentForm');
+                if (commentForm) {
+                    commentForm.style.display = 'block'; // Show comment form
+                }
+                const addCommentbtn = document.getElementById('newCommentBtn');
+                if (addCommentbtn) {
+                    addCommentbtn.style.display = 'none'; // Hide add comment button
+                }
+            });
+        }
+    });
+</script>

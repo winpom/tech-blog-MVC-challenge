@@ -1,31 +1,86 @@
-const submitButton = document.querySelector('#submit');
-
-submitButton.addEventListener('click', function (event) {
-    event.preventDefault();
-
-    const username = document.getElementById('usernameInput').value;
-    const title = document.getElementById('titleInput').value;
-    const content = document.getElementById('contentInput').value;
-
-    // Stop execution if any field is empty
-    if (username.trim() === '' || title.trim() === '' || content.trim() === '') {
-        alert('Please fill out all fields before submitting.');
-        return; 
+document.addEventListener('DOMContentLoaded', () => {
+    // new post logic
+    const newPostButton = document.getElementById('newPostBtn');
+    if (newPostButton) {
+        newPostButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default behavior of the button
+            document.getElementById('postForm').style.display = 'block'; // Show post form
+        });
     }
 
-    let blogPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+    // new comment logic
+    const newCommentButton = document.getElementById('newCommentBtn');
+    if (newCommentButton) {
+        newCommentButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default behavior of the button
+            document.getElementById('commentForm').style.display = 'block'; // Show comment form
+        });
+    }
 
-    const newBlogPost = {
-        username: username,
-        title: title,
-        content: content,
-    };
+    const submitCommentButton = document.getElementById('submitComment');
+    if (submitCommentButton) {
+        submitCommentButton.addEventListener('click', async (event) => {
+            event.preventDefault(); // Prevent the default behavior of the button
+            const content = document.getElementById('commentContent').value;
+            const postId = window.location.pathname.split('/').pop(); // Extract postId from URL
 
-    blogPosts.push(newBlogPost);
+            try {
+                const response = await fetch(`/api/comment/new`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        content,
+                        post_id: postId, // Include the post_id in the request body
+                        // user_id: YOUR_USER_ID_HERE, // Include the user_id in the request body
+                    }),
+                });
 
-    localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
+                if (response.ok) {
+                    alert('Comment added successfully!');
+                    // Dynamically update the comment section here instead of reloading the page
+                    // window.location.reload(); 
+                } else {
+                    alert('Failed to add comment.');
+                }
+            } catch (error) {
+                console.error('Error adding comment:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    }
 
-    alert('Blog post submitted successfully!');
+    const submitPostButton = document.getElementById('submitPost');
+    if (submitPostButton) {
+        submitPostButton.addEventListener('click', async (event) => {
+            event.preventDefault(); // Prevent the default behavior of the button
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
 
-    window.location.href = 'blog.html';
-})
+            try {
+                const response = await fetch(`/api/post/new`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        title,
+                        content,
+                    }),
+                });
+
+                if (response.ok) {
+                    alert('Post added successfully!');
+                    // Dynamically update the post section here instead of reloading the page
+                    // window.location.reload(); 
+                } else {
+                    alert('Failed to add post.');
+                }
+            } catch (error) {
+                console.error('Error adding post:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    }
+});

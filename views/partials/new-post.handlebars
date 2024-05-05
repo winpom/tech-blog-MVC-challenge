@@ -1,10 +1,5 @@
-<!-- new-post.handlebars -->
 {{#if loggedIn}}
 <form id="blogForm">
-    <label for="usernameInput">Username:</label><br>
-    <!-- Pre-fill the username field with the value passed from the server -->
-    <input type="text" id="usernameInput" value="{{ username }}" readonly><br><br>
-
     <label for="titleInput">Title:</label><br>
     <input type="text" id="titleInput" placeholder="My Day Today" required><br><br>
 
@@ -14,7 +9,6 @@
     <button type="submit" class="submit" id="submit">Submit</button>
 </form>
 {{else}}
-<!-- If the user is not logged in, prompt them to log in -->
 <section class="login-card">
   <p>You must log in to view this page. <a href="/login">Login</a> or <a href="/signup">Sign Up</a></p>
 </section>
