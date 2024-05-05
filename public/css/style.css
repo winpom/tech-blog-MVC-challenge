@@ -71,8 +71,7 @@ nav a:hover {
 
 h1,
 h2,
-h3,
-h4 {
+h3 {
     text-align: center;
     /* padding-bottom: .5em; */
 }
@@ -94,18 +93,32 @@ h3 {
 }
 
 h4 {
-    font-size: 1.25em;
-    padding-bottom: .5em;
+    font-size: 1em;
+    line-height: 1;
 }
 
 h5 {
-    font-size: 1em;
+    font-size: .8em;
     margin: 5px 0 5px 0;
 }
 
 h6 {
     font-size: .75em;
     margin: 10px auto;
+}
+
+.post-username {
+  font-weight: bold;
+  font-size: 1em;
+  line-height: 1;
+  margin-bottom: 0px,
+}
+
+.post-date {
+  font-weight: bold;
+  font-size: .8em;
+  line-height: .8;
+  margin-top: 0px,
 }
 
 .form {

@@ -1,27 +1,6 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
-const { User } = require('../../models'); 
+const { Post, User } = require('../../models');
 const withAuth = require('../../utils/auth');
-
-// Get a post by ID
-router.get('/:id', async (req, res) => {
-  try {
-    const postId = req.params.id;
-    const postData = await Post.findByPk(postId, {
-      include: [{ model: User, attributes: ['username'] }], 
-    });
-
-    if (!postData) {
-      res.status(404).json({ error: 'Post not found' });
-      return;
-    }
-
-    res.render('post', { post: postData });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: 'Failed to retrieve post data' });
-  }
-});
 
 // Create a new post
 router.post('/new', withAuth, async (req, res) => {
@@ -36,18 +15,6 @@ router.post('/new', withAuth, async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
-  }
-});
-
-// Renders the new post page
-router.get('/new', withAuth, async (req, res) => {
-  try {
-    const loggedInUsername = req.session.username; 
-
-    res.render('new-post', { loggedIn: true, username: loggedInUsername });
-  } catch (err) {
-    console.error('Error rendering new post page:', err);
-    res.status(500).json({ error: 'Failed to render new post page' });
   }
 });
 

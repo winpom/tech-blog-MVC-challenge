@@ -1,0 +1,13 @@
+<section class="post">
+  <a href="/post/{{id}}">
+    <header>{{post.title}}</header>
+  </a>
+  <h4>{{post.user.username}}</h4>
+  <h5>{{format_date post.post_date}}</h5>
+  <p>{{post.content}}</p>
+  <br>
+  <h6>Comments:</h6>
+  {{#each post.comments as |comment|}}
+  <p>{{> comment-details}}</p>
+  {{/each}}
+</section>
