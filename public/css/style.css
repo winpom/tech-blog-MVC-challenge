@@ -8,6 +8,7 @@
   --dark: #182c23;
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
+  --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 body {
@@ -163,6 +164,17 @@ textarea {
   color: var(--light);
 }
 
+.dashboard-title {
+  color: var(--light);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+  background-color: var(--tertiary);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  filter: drop-shadow(0px 5px 5px var(--dark));
+}
+
 .user {
   flex: 4;
   background-color: var(--light);
@@ -187,10 +199,9 @@ img {
   background-color: var(--light);
   margin: 20px;
   padding: 10px;
-  /* flex: 0 1 40%; */
   border: 7px double var(--dark);
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--box-shadow);
   width: 700px;
 }
 
@@ -202,7 +213,7 @@ img {
   flex: 0 1 40%;
   border: 7px double var(--dark);
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--box-shadow)
 }
 
 .single-post header,
@@ -213,7 +224,7 @@ img {
   margin: 0 0 10px 0;
   background-color: var(--tertiary);
   padding: 15px;
-  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+  border-radius: var(--border-radius);
 }
 
 .posts, 
@@ -221,7 +232,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; /* Adjusted justify-content property */
-  margin: auto;
+  margin: 10px auto auto auto;
 }
 
 /* CARDS */
@@ -231,7 +242,7 @@ img {
   margin: 20px;
   padding: 10px;
   border: 7px double var(--dark);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
   border-width: thick;
   justify-content: space-between;
