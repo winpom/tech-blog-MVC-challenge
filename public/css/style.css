@@ -185,6 +185,10 @@ textarea {
   align-items: center;
 }
 
+button {
+  margin-bottom: 10px;
+}
+
 img {
   max-width: 100%;
   height: auto;

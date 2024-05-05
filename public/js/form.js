@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault(); 
             const title = document.getElementById('postTitle').value;
             const content = document.getElementById('postContent').value;
-
+    
             try {
-                const response = await fetch(`/post`, {
+                const response = await fetch(`/api/post`, { // Update the URL to match your server-side route
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         content,
                     }),
                 });
-
+    
                 if (response.ok) {
                     alert('Post added successfully!');
-                    // window.location.reload(); 
+                    window.location.reload(); 
                 } else {
                     alert('Failed to add post.');
                 }
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('An error occurred. Please try again.');
             }
         });
-    }
+    }    
 });
 
 
