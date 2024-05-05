@@ -60,26 +60,24 @@ if (newCommentButton) {
 const submitCommentButton = document.getElementById('submitCommentBtn');
 if (submitCommentButton) {
     submitCommentButton.addEventListener('click', async (event) => {
-        console.log('HELP ME')
         event.preventDefault(); // Prevent the default behavior of the button
         const content = document.getElementById('commentContent').value;
 
         const postId = window.location.pathname.split('/').pop(); // Extract postId from URL
         try {
-            const response = await fetch(`/api/comment/`, {
+            const response = await fetch(`/api/comment/${postId}`, { // Update the URL to include the postId
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     content,
-                    post_id: postId, 
                 }),
             });
 
             if (response.ok) {
                 alert('Comment added successfully!');
-                // window.location.reload(); 
+                window.location.reload(); 
             } else {
                 alert('Failed to add comment.');
             }
