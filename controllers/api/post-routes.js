@@ -21,7 +21,7 @@ router.post('/', withAuth, async (req, res) => {
 // Delete a post
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const post = await Post.findByPk(req.params.postId);
+    const post = await Post.findByPk(req.params.id);
 
     if (!post) {
       res.status(404).json({ message: 'Post not found' });

@@ -204,7 +204,7 @@ img {
   margin: 20px;
   padding: 10px;
   border: 7px double var(--dark);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   width: 700px;
 }
@@ -237,6 +237,15 @@ img {
   flex-wrap: wrap;
   justify-content: space-between; /* Adjusted justify-content property */
   margin: 10px auto auto auto;
+}
+
+.delete-btn {
+  background-color: var(--light);
+  color: var(--dark);
+  padding: 10px 20px;
+  border: 2px solid var(--dark);
+  border-radius: var(--border-radius);
+  cursor: pointer;
 }
 
 /* CARDS */
