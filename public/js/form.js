@@ -72,29 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+
     // reveal update post form
-    const updatePostButtons = document.querySelectorAll('.updateBtn');
-    updatePostButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
+    const updateButtons = document.querySelectorAll('.updateBtn');
+    updateButtons.forEach(button => {
+        button.addEventListener('click', async (event) => {
             event.preventDefault();
-
-            // Extract post ID, title, and content from the clicked update button
-            const postId = event.target.dataset.postId;
-            const title = event.target.dataset.title;
-            const content = event.target.dataset.content;
-
-            // Set the value of input fields in the update post form
-            const updatedPostTitleInput = document.getElementById('updatedPostTitle');
-            const updatedPostContentInput = document.getElementById('updatedPostContent');
-            if (updatedPostTitleInput && updatedPostContentInput) {
-                updatedPostTitleInput.value = title;
-                updatedPostContentInput.value = content;
-            }
-
-            // Display the update post form if it's hidden
+            const postId = button.dataset.postId;
+            const title = button.dataset.title;
+            const content = button.dataset.content;
             const updatePostForm = document.getElementById('updatePostForm');
-            if (updatePostForm) {
+            const postForm = document.getElementById('postForm');
+
+            if (updatePostForm && postForm) {
+                if (postForm.style.display === 'block') {
+                    postForm.style.display = 'none';
+                }
+
                 updatePostForm.style.display = 'block';
+                document.getElementById('updatedPostTitle').value = title;
+                document.getElementById('updatedPostContent').value = content;
             }
         });
     });
@@ -106,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             const title = document.getElementById('updatedPostTitle').value;
             const content = document.getElementById('updatedPostContent').value;
-            const postId = event.target.dataset.postId; // Retrieve the post ID from the clicked update button
+            const postId = submitUpdatedPostButton.dataset.postId;
 
             try {
                 const response = await fetch(`/api/post/${postId}`, {
@@ -132,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
 
     // new comment logic
     // button to reveal comment form
