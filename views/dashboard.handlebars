@@ -1,8 +1,11 @@
 {{#if loggedIn}}
-{{> dashboard-details}}
+  {{> dashboard-details}}
 {{else}}
-{{> login-details}}
+  {{> login-details}}
 {{/if}}
+<script>
+  console.log("loggedIn:", {{loggedIn}});
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
