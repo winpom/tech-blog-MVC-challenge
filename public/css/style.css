@@ -217,7 +217,8 @@ img {
   flex: 0 1 40%;
   border: 7px double var(--dark);
   border-radius: 10px;
-  box-shadow: var(--box-shadow)
+  box-shadow: var(--box-shadow);
+  position: relative;
 }
 
 .single-post header,
@@ -242,10 +243,15 @@ img {
 .delete-btn {
   background-color: var(--light);
   color: var(--dark);
-  padding: 10px 20px;
+  padding: 5px 10px; /* Increase padding for better appearance */
   border: 2px solid var(--dark);
   border-radius: var(--border-radius);
   cursor: pointer;
+  font-size: 0.6em;
+  font-weight: bolder;
+  position: absolute;
+  right: 3px;
+  top: 65px;
 }
 
 /* CARDS */
