@@ -3,7 +3,7 @@ const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Create a new post
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newPost = await Post.create({
       title: req.body.title,
@@ -19,7 +19,7 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // Delete a post
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const post = await Post.findByPk(req.params.id);
 
@@ -37,7 +37,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 // Update a post
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const post = await Post.findByPk(req.params.id);
 

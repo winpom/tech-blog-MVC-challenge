@@ -19,8 +19,6 @@ router.get('/', async (req, res) => {
         plain: true
       })
     );
-    // console.log('THIS ONE')
-    // console.log(mappedData);
 
     // Render the homepage template, passing loggedIn and posts data
     res.render('homepage', { loggedIn, posts: mappedData });
@@ -44,7 +42,7 @@ router.get('/login', (req, res) => {
 });
 
 // Get a post by ID
-router.get('/post/:id', withAuth, async (req, res) => {
+router.get('/post/:id', async (req, res) => {
   try {
     const postId = req.params.id;
     const postData = await Post.findByPk(postId, {
