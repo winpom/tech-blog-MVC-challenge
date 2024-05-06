@@ -39,7 +39,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 // Update a post
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const post = await Post.findByPk(req.params.postId);
+    const post = await Post.findByPk(req.params.id);
 
     if (!post) {
       res.status(404).json({ message: 'Post not found' });
@@ -48,9 +48,9 @@ router.put('/:id', withAuth, async (req, res) => {
 
     post.title = req.body.title;
     post.content = req.body.content;
-    await post.save();
+    await post.save(); // Save the changes
 
-    res.status(200).json({ message: 'Post updated successfully' });
+    res.status(200).json({ message: 'Post updated successfully', updatedPost: post });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

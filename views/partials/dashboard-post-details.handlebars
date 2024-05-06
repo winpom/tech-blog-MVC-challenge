@@ -2,7 +2,10 @@
   <a href="/post/{{id}}">
     <header>{{title}}</header>
   </a>
-<button class="delete-btn" id="deletePostBtn" data-post-id="{{id}}">X</button>
+  <div>
+    <button class="deleteBtn" id="deletePostBtn" data-post-id="{{id}}">X</button>
+    <button class="updateBtn" id="updatePostBtn" data-post-id="{{id}}">Update</button>
+  </div>
   <p class="post-username">{{user.username}}</p>
   <p class="post-date">{{format_date createdAt}}</p>
   <p>{{content}}</p>

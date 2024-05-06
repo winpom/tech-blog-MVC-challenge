@@ -14,6 +14,13 @@
     <textarea id="postContent" placeholder="Write your post here" required></textarea><br><br>
     <button id="submitPostBtn">Submit Post</button>
   </form>
+    <form class="post" id="updatePostForm" style="display: none;">
+    <label for="updatedPostTitle">Title:</label><br>
+    <input type="text" id="updatedPostTitle" placeholder="Title your post" required><br><br>
+    <label for="updatedPostContent">Content:</label><br>
+    <textarea id="updatedPostContent" placeholder="Write your post here" required></textarea><br><br>
+    <button id="resubmitPostBtn">Submit Post</button>
+  </form>
 </section>
 {{else}}
 <section class="login-card">
