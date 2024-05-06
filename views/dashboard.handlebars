@@ -8,11 +8,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const newPostButton = document.getElementById('newPostBtn');
     if (newPostButton) {
-        newPostButton.addEventListener('click', (event) => { // Pass the event parameter
-            event.preventDefault(); // Prevent the default behavior of the button
+        newPostButton.addEventListener('click', (event) => { 
+            event.preventDefault();
             const postForm = document.getElementById('postForm');
             if (postForm) {
-                postForm.style.display = 'block'; // Show post form
+                postForm.style.display = 'block';
             }
         });
     }

@@ -4,10 +4,6 @@ const { Post, User, Comment } = require('../models');
 router.get('/', async (req, res) => { 
   try {
     const userData = await User.findByPk(req.session.user_id);
-    if (!userData) {
-      res.redirect('/login'); // Redirect to login if user not found
-      return;
-    }
     const postData = await Post.findAll({
       where: {
         user_id: req.session.user_id,
