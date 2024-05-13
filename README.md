@@ -23,15 +23,11 @@
 
 [npm install pg@8.11.5](https://www.npmjs.com/package/pg/v/8.11.5)
 
-[npm install dotenv](https://www.npmjs.com/package/dotenv)
-
 [npm install sequelize](https://www.npmjs.com/package/sequelize)
-
-[npm i connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 
 [npm i express-session](https://www.npmjs.com/package/express-session)
 
-[npm i bcrypt](https://www.npmjs.com/package/bcrypt)
+[npm i multer](https://www.npmjs.com/package/multer)
 
 ## Usage
 
