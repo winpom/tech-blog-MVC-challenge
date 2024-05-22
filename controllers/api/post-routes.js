@@ -45,15 +45,36 @@ router.put('/:id', async (req, res) => {
       return;
     }
 
-    post.title = req.body.title;
-    post.content = req.body.content;
-    await post.save(); // Save the changes
+    const updatedPost = await post.update({
+      title: req.body.title,
+      content: req.body.content,
+    });
 
-    res.status(200).json({ message: 'Post updated successfully', updatedPost: post });
+    res.status(200).json(updatedPost);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+// router.put('/:id', async (req, res) => {
+//   try {
+//     const post = await Post.findByPk(req.params.id);
+
+//     if (!post) {
+//       res.status(404).json({ message: 'Post not found' });
+//       return;
+//     }
+
+//     post.title = req.body.title;
+//     post.content = req.body.content;
+//     await post.save(); // Save the changes
+
+//     res.status(200).json({ message: 'Post updated successfully', updatedPost: post });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
