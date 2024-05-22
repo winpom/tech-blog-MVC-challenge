@@ -17,34 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
     //post form submission
     const submitPostButton = document.getElementById('submitPostBtn');
     if (submitPostButton) {
-        submitPostButton.addEventListener('click', async (event) => {
-            event.preventDefault();
-            const title = document.getElementById('postTitle').value;
-            const content = document.getElementById('postContent').value;
-
-            try {
-                const response = await fetch(`/api/post`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        title,
-                        content,
-                    }),
-                });
-
-                if (response.ok) {
-                    alert('Post added successfully!');
-                    window.location.reload();
-                } else {
-                    alert('Failed to add post.');
-                }
-            } catch (error) {
-                console.error('Error adding post:', error);
-                alert('An error occurred. Please try again.');
-            }
-        });
+      submitPostButton.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const title = document.getElementById('postTitle').value;
+        const content = document.getElementById('postContent').value;
+  
+        try {
+          const response = await fetch('/api/post', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              title,
+              content,
+            }),
+          });
+  
+          if (response.ok) {
+            alert('Post added successfully!');
+            window.location.reload();
+          } else {
+            alert('Failed to add post.');
+          }
+        } catch (error) {
+          console.error('Error adding post:', error);
+          alert('An error occurred. Please try again.');
+        }
+      });
     }
 
     // post deletion
